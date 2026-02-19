@@ -16,7 +16,7 @@ def fit_kmeans(embeddings, k, random_state=42):
     labels = kmeans.fit_predict(embeddings)
     centroids = kmeans.cluster_centers_
 
-    return labels, centroids
+    return kmeans, labels, centroids
 
 
 def compute_similarity_to_centroid(embeddings, labels, centroids):

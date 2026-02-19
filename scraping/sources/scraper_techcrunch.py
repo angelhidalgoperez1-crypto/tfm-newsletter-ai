@@ -4,7 +4,7 @@ import logging
 class TechCrunchScraper(BaseScraper):
 
     def __init__(self, tags=None, max_pages=20):
-        super().__init__("TechCrunch")
+        super().__init__("TechCrunch", base_domains=["techcrunch.com"])
 
         self.tags = tags or [
             "artificial-intelligence",

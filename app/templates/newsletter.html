@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AI Newsletter</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .header h1 {
+        color: #2C3E50;
+        margin-bottom: 5px;
+    }
+
+    .header p {
+        color: #7f8c8d;
+        font-size: 14px;
+    }
+
+    .article {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background: #f9fbfd;
+        transition: transform 0.2s ease;
+        border-left: 5px solid #3498DB;
+    }
+
+    .article:hover {
+        transform: translateY(-3px);
+    }
+
+    .article h3 {
+        margin: 0 0 10px 0;
+        color: #34495e;
+    }
+
+    .meta {
+        font-size: 13px;
+        color: #95a5a6;
+        margin-bottom: 10px;
+    }
+
+    .read-more {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 14px;
+        background-color: #3498DB;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .read-more:hover {
+        background-color: #2980B9;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 12px;
+        color: #bdc3c7;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🧠 AI Newsletter – AMC Global</h1>
+        <p>Generado automáticamente el {{ date }}</p>
+    </div>
+
+    {% for article in articles %}
+        <div class="article">
+            <h3>{{ article.title }}</h3>
+            <div class="meta">
+                {{ article.source }} · {{ article.language }}
+            </div>
+            <a href="{{ article.url }}" target="_blank" class="read-more">
+                Leer más
+            </a>
+        </div>
+    {% endfor %}
+
+    <div class="footer">
+        Sistema automatizado de clasificación basado en clustering.
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -15,7 +15,7 @@ st.set_page_config(
 # -----------------------------
 @st.cache_data
 def load_data():
-    return pd.read_pickle("data/processed/even_more_articles.pkl")
+    return pd.read_pickle("data/processed/definite_articles_scored.pkl")
 
 df = load_data()
 

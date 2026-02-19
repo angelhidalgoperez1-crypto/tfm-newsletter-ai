@@ -3,7 +3,7 @@ from scraping.scraper_base import BaseScraper
 class WiredScraper(BaseScraper):
 
     def __init__(self, max_pages=20):
-        super().__init__("Wired ES")
+        super().__init__("Wired ES", base_domains=["es.wired.com"])
         self.base_url = "https://es.wired.com/tag/inteligencia-artificial"
         self.max_pages = max_pages
 

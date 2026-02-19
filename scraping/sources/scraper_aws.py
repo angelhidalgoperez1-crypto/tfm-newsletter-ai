@@ -12,7 +12,7 @@ class AWSScraper(BaseScraper):
         max_pages=30,
         sleep_time=1.0
     ):
-        super().__init__("AWS Blog")
+        super().__init__("AWS Blog", base_domains=["aws.amazon.com"])
 
         self.blogs = blogs or [
             "machine-learning",

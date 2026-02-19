@@ -12,7 +12,7 @@ class XatakaScraper(BaseScraper):
         step=20,
         sleep_time=1.0
     ):
-        super().__init__("Xataka")
+        super().__init__("Xataka", base_domains=["xataka.com"])
 
         # sections = [(tipo, nombre)]
         self.sections = sections or [

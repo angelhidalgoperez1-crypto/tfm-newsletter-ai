@@ -5,9 +5,18 @@ project:
 data:
   raw_path: data/raw/even_more_articles_normalized.csv
   processed_path: data/processed/articles_with_embeddings.parquet
+  processed_urls_path: data/processed/processed_urls.json
+  outputs_dir: data/outputs
+  diagnostics_dir: data/outputs/diagnostics
+  newsletters_dir: data/outputs/newsletters
+
+paths:
+  models_dir: models
+  raw_data_dir: data/raw
+  processed_data_dir: data/processed
 
 embeddings:
-  active_model: miniLM_multilingual
+  active_model: distiluse-base-multilingual-cased-v2
   models:
     miniLM_multilingual: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
     distiluse_multilingual: sentence-transformers/distiluse-base-multilingual-cased-v2
@@ -17,8 +26,58 @@ clustering:
   enabled: true
   n_clusters: 6
   method: kmeans
+  k_min: 4
+  k_max: 12
+  similarity_threshold: 0.95
+
+scoring:
+  w_similarity: 0.4
+  w_novelty: 0.3
+  w_recency: 0.2
+  w_source: 0.5
+
+scraping:
+  xataka:
+    enabled: true
+    max_pages: 50
+  huggingface:
+    enabled: true
+    max_pages: 50
+    sleep_time: 2
+  techcrunch:
+    enabled: true
+    max_pages: 50
+  aws:
+    enabled: true
+    max_pages: 50
+    blogs:
+      - machine-learning
+      - infrastructure-and-automation
+      - iot
+      - big-data
+  wired:
+    enabled: false
+    max_pages: 50
+  microsoft:
+    enabled: false
+  aibusiness:
+    enabled: false
+  openai:
+    enabled: false
 
 newsletter:
   top_n_articles: 10
+  top_n_per_cluster: 3
   novelty_weight: 0.4
   relevance_weight: 0.6
+  title: "AMC - Weekly AI & Tech Newsletter"
+  send: false
+  recipients: []
+
+airflow:
+  owner: angel
+  schedule_interval: "0 6 * * MON"
+  start_date: 2025-01-01
+  retries: 1
+  retry_delay_minutes: 10
+  catchup: False
